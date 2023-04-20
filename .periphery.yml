@@ -1,0 +1,5 @@
+schemes:
+- Feature-Example
+targets:
+- Feature_Example
+workspace: Example/Feature.xcworkspace

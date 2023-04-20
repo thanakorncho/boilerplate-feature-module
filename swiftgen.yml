@@ -1,0 +1,50 @@
+input_dir: Feature/Assets/
+output_dir: Feature/Classes/Generated/
+
+xcassets:
+  - inputs: Resources/Color.xcassets
+    outputs:
+        templatePath: xcassets-custom.stencil
+        output: Color+Generated.swift
+        params:
+          bundle: FeatureBundlePod.resourcesBundle
+          publicAccess: true
+          enumName: METAColor
+  - inputs: Resources/Asset.xcassets
+    outputs:
+      templateName: swift5
+      output: Asset+Generated.swift
+      params:
+        bundle: FeatureBundlePod.resourcesBundle
+        publicAccess: true
+        enumName: METAImage
+  - inputs: Resources/Sound.xcassets
+    outputs:
+      templateName: swift5
+      output: Sound+Generated.swift
+      params:
+        bundle: FeatureBundlePod.resourcesBundle
+        publicAccess: true
+        enumName: METASound
+
+fonts:
+  - inputs: Fonts
+    outputs:
+      - templateName: swift5
+        output: Font+Generated.swift
+        params:
+          bundle: FeatureBundlePod.resourcesBundle
+          publicAccess: true
+          enumName: METAFont
+
+strings:
+  inputs: Resources/Localization/en.lproj
+  outputs:
+    - templateName: structured-swift5
+      output: L10n+Generated.swift
+      params:
+        bundle: FeatureBundlePod.resourcesBundle
+        publicAccess: true
+        noComments: true
+      # flat-swift5.stencil
+      # structured-swift5.stencil
