@@ -1,0 +1,59 @@
+// MARK: - ✖✖✖✖✖ Common ✖✖✖✖✖
+// ********************************
+
+// MARK: ▸ Label
+"common_not_applicable_label" = "N/A";
+"common_free_label" = "ฟรี";
+"common_avoid_caution_label" = "ไม่ต้องเตือนอีก";
+"common_loading_label" = "กำลังโหลด";
+"common_open_photo_library_label" = "เปิดคลังภาพ";
+"common_photo_shoot_label" = "ถ่ายภาพ";
+"common_comment_placeholder_label" = "แสดงความคิดเห็น";
+
+// MARK: ▸ Dialog / Popup / Alert / Float
+"common_dialog_error_title_label" = "เกิดข้อผิดพลาด\nกรุณาลองใหม่อีกครั้งในภายหลัง";
+"common_dialog_rent_completed_title_label" = "เช่า%@ %@ เรียบร้อย";
+"common_dialog_save_success_label" = "บันทึกเรียบร้อย";
+"common_dialog_share_success_label" = "แชร์เรียบร้อย";
+"common_dialog_select_photo_title_label" = "เลือกรูปภาพ";
+
+// MARK: ▸ Button
+"common_button_no_label" = "ไม่";
+"common_button_agree_label" = "ตกลง";
+"common_button_cancel_label" = "ยกเลิก";
+"common_button_follow_label" = "ติดตาม";
+"common_button_following_label" = "ติดตามแล้ว";
+"common_button_save_label" = "บันทึก";
+"common_button_yes_label" = "ใช่";
+"common_button_buy_label" = "ซื้อ";
+"common_button_select_label" = "เลือก";
+"common_button_confirm_label" = "ยืนยัน";
+"common_button_edit_label" = "แก้ไข";
+
+// MARK: ▸ Suffix Text
+"common_minute_suffix_label" = "%@ นาที";
+"common_hour_suffix_label" = "%@ ชั่วโมง";
+"common_day_suffix_label" = "%@ วัน";
+"common_month_suffix_label" = "%@ เดือน";
+
+// MARK: ▸ Prefix Text
+
+
+// MARK: - ✖✖✖✖✖ Overlay Scene ✖✖✖✖✖
+// **********************************
+
+
+// MARK: ▸ Settings
+"settings_microphone_on_label" = "เปิดไมค์";
+"settings_microphone_off_label" = "ปิดไมค์";
+"settings_sound_on_label" = "เปิดเสียง";
+"settings_sound_off_label" = "ปิดเสียง";
+"settings_unblock_label" = "ปลดบล็อก";
+"settings_block_label" = "บล็อก";
+"settings_report_label" = "รายงาน";
+"settings_share_label" = "แชร์";
+"settings_room_label" = "ตั้งค่าห้อง";
+
+
+// MARK: - ✖✖✖✖✖ Scene ✖✖✖✖✖
+// **********************************
