@@ -2,30 +2,31 @@ input_dir: Feature/Assets/
 output_dir: Feature/Classes/Generated/
 
 xcassets:
-  - inputs: Resources/Color.xcassets
+  - inputs: Color.xcassets
     outputs:
-        templatePath: xcassets-custom.stencil
+        templateName: swift5
+        # templatePath: xcassets-custom.stencil
         output: Color+Generated.swift
         params:
           bundle: FeatureBundlePod.resourcesBundle
           publicAccess: true
-          enumName: METAColor
-  - inputs: Resources/Asset.xcassets
+          enumName: FeatColor
+  - inputs: Asset.xcassets
     outputs:
       templateName: swift5
       output: Asset+Generated.swift
       params:
         bundle: FeatureBundlePod.resourcesBundle
         publicAccess: true
-        enumName: METAImage
-  - inputs: Resources/Sound.xcassets
+        enumName: FeatImage
+  - inputs: Sound.xcassets
     outputs:
       templateName: swift5
       output: Sound+Generated.swift
       params:
         bundle: FeatureBundlePod.resourcesBundle
         publicAccess: true
-        enumName: METASound
+        enumName: FeatSound
 
 fonts:
   - inputs: Fonts
@@ -35,10 +36,10 @@ fonts:
         params:
           bundle: FeatureBundlePod.resourcesBundle
           publicAccess: true
-          enumName: METAFont
+          enumName: FeatFont
 
 strings:
-  inputs: Resources/Localization/en.lproj
+  inputs: Localization/en.lproj
   outputs:
     - templateName: structured-swift5
       output: L10n+Generated.swift
