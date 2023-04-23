@@ -15,29 +15,29 @@ class MainLandingViewModel:
     DefaultBaseViewModel,
     MainLandingViewModelDependencies,
     MainLandingViewModelDriven {
-
+    
     private typealias Object = MainLandingViewModel
     private typealias Driven = MainLandingStreams
     private typealias Model = MainLandingModels
-
+    
     // MARK: - Data source
     var useCases: MainLandingViewModelUseCases
     var context: MainLandingViewModelProvider.Context
-
+    
     // MARK: - Rx
     let disposeBag = DisposeBag()
     private let activityIndicator = ActivityIndicator()
     private let errorTracker = ErrorTracker()
-
+    
     // MARK: - Observable
     private let loadingRelay = PublishRelay<Bool>()
     private let loadRelay = PublishRelay<Model.Displayed>()
-
+    
     // MARK: - Input & Output & Router
     var input: MainLandingViewModelInput!
     var output: MainLandingViewModelOutput!
     var action: MainLandingViewModelAction!
-
+    
     // MARK: - Setup
     init(
         _ context: Context,
@@ -48,7 +48,7 @@ class MainLandingViewModel:
         super.init()
         self.setup()
     }
-
+    
     private func setup() {
         input = Driven.Input(
             onLoad: .init()
@@ -58,12 +58,12 @@ class MainLandingViewModel:
             didLoading: loadingRelay.asDriverOnErrorJustComplete()
         )
         action = Driven.Action(
-            tapSomething: .init(),
+            logout: .init(),
             dismiss: .init()
         )
         subscribes()
     }
-
+    
     // MARK: - Subscribes
     private func subscribes() {
         activityIndicator.asObservable()
@@ -75,10 +75,10 @@ class MainLandingViewModel:
                 onNext: Object.onLoadProcess)
             .disposed(by: disposeBag)
     }
-
+    
     private func service() {
     }
-
+    
     // MARK: - Process
     private func onLoadProcess(_ void: Void) {
         let displayed = Model.Displayed()

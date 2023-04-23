@@ -14,6 +14,7 @@ protocol MainCoordinatorDependencies: DefaultCoordinator {
 }
 
 struct MainCoordinatorRoute {
+    var logout: PublishRelay<Void> = .init()
     var settings: PublishRelay<Void> = .init()
 }
 
@@ -24,10 +25,11 @@ class MainCoordinator: MainCoordinatorDependencies, MainCoordinatorType {
     // MARK: - Container
     var container: Container
 
-    // MARK: - Router
+    // MARK: - Flow
     var flow: CoordinatorRouteDependencies
 
     // MARK: - Properties
+    let route = MainCoordinatorRoute()
     var navigationController: UINavigationController
 
     // MARK: - Constants
@@ -44,21 +46,23 @@ class MainCoordinator: MainCoordinatorDependencies, MainCoordinatorType {
     }
 
     func start() {
+        subscribes()
         routeToLanding()
     }
 
     // MARK: - Action
-    func subscribes(
-        _ disposeBag: DisposeBag
-    ) -> MainCoordinatorRoute {
-        let route = MainCoordinatorRoute()
+    func subscribes() {
         route.settings
             .withUnretained(self)
             .subscribe(onNext: { owner, _ in
                 owner.routeToSetting()
             })
             .disposed(by: disposeBag)
-        return route
+        route.logout
+            .map({ CoordinatorFlow.login })
+            .debug()
+            .bind(to: flow.flow)
+            .disposed(by: disposeBag)
     }
 }
 

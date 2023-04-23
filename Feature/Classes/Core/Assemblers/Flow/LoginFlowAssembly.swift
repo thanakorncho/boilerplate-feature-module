@@ -22,6 +22,6 @@ final class LoginFlowAssembly: Assembly {
                     flow: flow,
                     navigationController: navigationController)
             })
-            .inObjectScope(.container)
+        .inObjectScope(.weak)
     }
 }

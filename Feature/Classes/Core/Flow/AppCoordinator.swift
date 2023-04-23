@@ -110,7 +110,6 @@ extension AppCoordinator {
         childCoordinator.removeFlow(flow.current)
         let new = UINavigationController()
         window?.switchRootViewController(to: new) { [weak self] in
-            print("before childCoordinator.count: \(String(describing: self?.childCoordinator.count))")
             self?.navigationController = new
             switch next {
             case .login:
@@ -119,7 +118,7 @@ extension AppCoordinator {
                 self?.mainFlow()
             }
             
-            print("after childCoordinator.count: \(String(describing: self?.childCoordinator.count))")
+            print("childCoordinator.count: \(String(describing: self?.childCoordinator.count))")
         }
     }
 }

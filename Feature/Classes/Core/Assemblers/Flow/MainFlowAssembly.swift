@@ -22,6 +22,6 @@ final class MainFlowAssembly: Assembly {
                     flow: flow,
                     navigationController: navigationController)
             })
-            .inObjectScope(.container)
+        .inObjectScope(.weak)
     }
 }

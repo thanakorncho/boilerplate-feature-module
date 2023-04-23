@@ -19,7 +19,7 @@ protocol MainLandingViewModelOutput: BaseViewModelOutput {
 }
 
 protocol MainLandingViewModelAction: BaseViewModelAction {
-    var tapSomething: PublishSubject<Void> { get }
+    var logout: PublishSubject<Void> { get }
 }
 
 protocol MainLandingViewModelDriven: BaseViewModelDriven where

@@ -24,7 +24,7 @@ class LoginCoordinator: LoginCoordinatorDependencies, LoginCoordinatorType {
     // MARK: - Container
     var container: Container
 
-    // MARK: - Router
+    // MARK: - Flow
     var flow: CoordinatorRouteDependencies
 
     // MARK: - Properties
@@ -33,6 +33,11 @@ class LoginCoordinator: LoginCoordinatorDependencies, LoginCoordinatorType {
 
     // MARK: - Constants
 
+    // MARK: - Life cycle
+    deinit {
+        print("deinit LoginCoordinator")
+    }
+    
     // MARK: - Setup
     init(
         _ container: Container,

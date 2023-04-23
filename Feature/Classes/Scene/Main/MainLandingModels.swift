@@ -34,7 +34,7 @@ struct MainLandingStreams {
     }
     
     struct Action: MainLandingViewModelAction {
-        var tapSomething: PublishSubject<Void>
+        var logout: PublishSubject<Void>
         var dismiss: PublishRelay<Void>
     }
 }

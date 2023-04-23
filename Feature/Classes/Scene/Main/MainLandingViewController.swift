@@ -72,6 +72,12 @@ class MainLandingViewController<ViewModel: MainLandingViewModelDriven>:
 
     internal func setupProperties() {
         view.backgroundColor = .clear
+        title = "Main"
+        navigationItem.rightBarButtonItem = .init(
+            title: "Logout",
+            style: .plain,
+            target: self,
+            action: #selector(logout))
     }
 
     internal func setupHierarchies() {
@@ -98,9 +104,13 @@ class MainLandingViewController<ViewModel: MainLandingViewModelDriven>:
             // For Other
         ])
     }
+    
+    @objc private func logout() {
+        viewModel.action.logout.onNextVoid()
+    }
 }
 
-// MARK: - Binder
+// MARK: - Action
 extension MainLandingViewController {
     private var loadingBinder: Binder<Bool> {
         return Binder(self, binding: { _, value in
