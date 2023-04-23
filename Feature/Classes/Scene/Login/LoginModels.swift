@@ -25,7 +25,7 @@ struct LoginViewModelProvider {
 
 struct LoginStreams {
     struct Input: LoginViewModelInput {
-        let onLoad: PublishRelay<Void>
+        let onLoad: PublishRelay<Void> = .init()
     }
     
     struct Output: LoginViewModelOutput {
@@ -34,7 +34,8 @@ struct LoginStreams {
     }
     
     struct Action: LoginViewModelAction {
-        var loggedIn: PublishSubject<Void>
-        var dismiss: PublishRelay<Void>
+        var loggedIn: PublishSubject<Void> = .init()
+        var dismiss: PublishRelay<Void> = .init()
+        var forgotPass: PublishSubject<Void> = .init()
     }
 }

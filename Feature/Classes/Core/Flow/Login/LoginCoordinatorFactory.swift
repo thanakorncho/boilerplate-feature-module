@@ -20,10 +20,27 @@ extension LoginCoordinator {
                 .debug()
                 .bind(to: route.loggedIn)
                 .disposed(by: viewModel.disposeBag)
+            viewModel.action.forgotPass
+                .debug()
+                .bind(to: route.forgotPass)
+                .disposed(by: viewModel.disposeBag)
         }
         
         let viewModel: LoginVM = container.resolve(argument: context)
         let viewController: LoginVC = container.resolve(argument: viewModel)
+        bind(viewModel)
+        return viewController
+    }
+    
+    internal func makeForgotPassword(
+        _ context: ForgotPasswordProvider.Context = .init()
+    ) -> ForgotPasswordVC {
+        func bind(_ viewModel: ForgotPasswordVM) {
+
+        }
+        
+        let viewModel: ForgotPasswordVM = container.resolve(argument: context)
+        let viewController: ForgotPasswordVC = container.resolve(argument: viewModel)
         bind(viewModel)
         return viewController
     }

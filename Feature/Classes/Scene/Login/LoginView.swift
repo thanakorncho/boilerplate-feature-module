@@ -18,11 +18,13 @@ class LoginView:
 
     struct Events {
         var loggedIn: ControlEvent<Void>
+        var forgotPass: ControlEvent<Void>
     }
 
     // MARK: - UI
     private let label: FeatLabel = .init()
     private let button: FeatTextButton = .init()
+    private let forgotButton: FeatTextButton = .init()
 
     // MARK: - Constraints
 
@@ -35,7 +37,8 @@ class LoginView:
     // MARK: - Output
     var event: Events {
         return .init(
-            loggedIn: button.rx.tap
+            loggedIn: button.rx.tap,
+            forgotPass: forgotButton.rx.tap
         )
     }
 
@@ -49,6 +52,8 @@ class LoginView:
         backgroundColor = ThemeColor.background
         label.style = .titleM
         label.textAlignment = .center
+        forgotButton.style = .main
+        forgotButton.backgroundColorForNormal = .magenta
         button.style = .main
         button.backgroundColorForNormal = .orange
     }
@@ -56,6 +61,7 @@ class LoginView:
     internal override func setupHierarchies() {
         addSubview(label)
         addSubview(button)
+        addSubview(forgotButton)
     }
 
     internal override func setupConstraints() {
@@ -66,11 +72,16 @@ class LoginView:
             make.top.equalTo(label.snp.bottom).offset(.s16)
             make.centerX.equalToSuperview()
         })
+        forgotButton.snp.makeConstraints({ make in
+            make.top.equalTo(button.snp.bottom).offset(.s16)
+            make.centerX.equalToSuperview()
+        })
     }
 
     internal override func setupLocalizes() {
         label.text = "Login Screen"
         button.setTitle("Logged In", for: .normal)
+        forgotButton.setTitle("Forgot Password", for: .normal)
     }
 
     internal override func setupEvent() {

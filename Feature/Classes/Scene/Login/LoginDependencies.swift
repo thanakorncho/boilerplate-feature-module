@@ -20,6 +20,7 @@ protocol LoginViewModelOutput: BaseViewModelOutput {
 
 protocol LoginViewModelAction: BaseViewModelAction {
     var loggedIn: PublishSubject<Void> { get }
+    var forgotPass: PublishSubject<Void> { get }
 }
 
 protocol LoginViewModelDriven: BaseViewModelDriven where

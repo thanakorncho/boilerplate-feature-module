@@ -69,11 +69,17 @@ class MainCoordinator: MainCoordinatorDependencies, MainCoordinatorType {
 // MARK: - Routing
 extension MainCoordinator {
     private func routeToLanding() {
-        print("routeToLanding")
         let mainLanding = makeMainLanding()
         navigationController.pushViewController(mainLanding)
     }
 
     private func routeToSetting() {
+        let setting = makeMainSetting()
+        navigationController.pushViewController(setting)
+    }
+    
+    private func routeToProfile() {
+        let profile = makeMainProfile()
+        navigationController.pushViewController(profile)
     }
 }

@@ -1,28 +1,27 @@
 //
-//  LoginViewModel.swift
+//  ForgotPasswordViewModel.swift
 //  Pods
 //
-//  Created by Thanakorn Chongcharoenthanakul on 22/4/2566 BE.
+//  Created by Thanakorn Chongcharoenthanakul on 23/4/2566 BE.
 //  Copyright (c) 2566 BE ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import Foundation
-import RxRelay
 import RxSwift
-import RxSwiftExt
+import RxRelay
 
-class LoginViewModel:
+class ForgotPasswordViewModel:
     DefaultBaseViewModel,
-    LoginViewModelDependencies,
-    LoginViewModelDriven {
+    ForgotPasswordViewModelDependencies,
+    ForgotPasswordViewModelDriven {
 
-    private typealias Object = LoginViewModel
-    private typealias Driven = LoginStreams
-    private typealias Model = LoginModels
+    private typealias Object = ForgotPasswordViewModel
+    private typealias Driven = ForgotPasswordStreams
+    private typealias Model = ForgotPasswordModels
 
     // MARK: - Data source
-    var useCases: LoginViewModelUseCases
-    var context: LoginViewModelProvider.Context
+    var useCases: ForgotPasswordViewModelUseCases
+    var context: ForgotPasswordViewModelProvider.Context
 
     // MARK: - Rx
     let disposeBag = DisposeBag()
@@ -34,9 +33,9 @@ class LoginViewModel:
     private let loadRelay = PublishRelay<Model.Displayed>()
 
     // MARK: - Input & Output & Router
-    var input: LoginViewModelInput!
-    var output: LoginViewModelOutput!
-    var action: LoginViewModelAction!
+    var input: ForgotPasswordViewModelInput!
+    var output: ForgotPasswordViewModelOutput!
+    var action: ForgotPasswordViewModelAction!
 
     // MARK: - Setup
     init(
@@ -50,12 +49,17 @@ class LoginViewModel:
     }
 
     private func setup() {
-        input = Driven.Input()
+        input = Driven.Input(
+            onLoad: .init()
+        )
         output = Driven.Output(
             didLoad: loadRelay.asDriverOnErrorJustComplete(),
             didLoading: loadingRelay.asDriverOnErrorJustComplete()
         )
-        action = Driven.Action()
+        action = Driven.Action(
+            tapSomething: .init(),
+            dismiss: .init()
+        )
         subscribes()
     }
 
@@ -83,9 +87,11 @@ class LoginViewModel:
 }
 
 // MARK: - Helper
-extension LoginViewModel {
+extension ForgotPasswordViewModel {
+
 }
 
 // MARK: - Common
-extension LoginViewModel {
+extension ForgotPasswordViewModel {
+
 }

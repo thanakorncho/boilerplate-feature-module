@@ -1,8 +1,8 @@
 //
-//  LoginViewController.swift
+//  ForgotPasswordViewController.swift
 //  Pods
 //
-//  Created by Thanakorn Chongcharoenthanakul on 22/4/2566 BE.
+//  Created by Thanakorn Chongcharoenthanakul on 23/4/2566 BE.
 //  Copyright (c) 2566 BE ___ORGANIZATIONNAME___. All rights reserved.
 //
 
@@ -11,14 +11,14 @@ import RxCocoa
 import RxSwift
 import SnapKit
 
-class LoginViewController<ViewModel: LoginViewModelDriven>:
+class ForgotPasswordViewController<ViewModel: ForgotPasswordViewModelDriven>:
     DefaultBaseViewController,
     BaseViewDependencies {
 
-    internal typealias Model = LoginModels
+    internal typealias Model = ForgotPasswordModels
 
     // MARK: - UI
-    private var mainView: LoginView = .init(frame: .zero)
+    private var mainView: ForgotPasswordView = .init(frame: .zero)
 
     // MARK: - Dependencies
     var viewModel: ViewModel!
@@ -36,14 +36,10 @@ class LoginViewController<ViewModel: LoginViewModelDriven>:
         super.init(nibName: nil, bundle: nil)
     }
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
     override func loadView() {
         self.view = .init(frame: .zero)
         setupHierarchies()
@@ -71,6 +67,8 @@ class LoginViewController<ViewModel: LoginViewModelDriven>:
     }
 
     internal func setupProperties() {
+        view.backgroundColor = .clear
+        navigationItem.title = "Forgot Pass"
     }
 
     internal func setupHierarchies() {
@@ -85,17 +83,12 @@ class LoginViewController<ViewModel: LoginViewModelDriven>:
 
     private func setupEvent() {
         disposeBag.insert([
-            mainView.event.loggedIn
-                .bind(to: viewModel.action.loggedIn),
-            mainView.event.forgotPass
-                .bind(to: viewModel.action.forgotPass)
+            // For View
         ])
 
         disposeBag.insert([
-            viewModel.output.didLoading
-                .drive(loadingBinder),
-            viewModel.output.didLoad
-                .drive(loadBinder)
+            viewModel.output.didLoading.drive(loadingBinder),
+            viewModel.output.didLoad.drive(loadBinder)
         ])
 
         disposeBag.insert([
@@ -105,9 +98,9 @@ class LoginViewController<ViewModel: LoginViewModelDriven>:
 }
 
 // MARK: - Binder
-extension LoginViewController {
+extension ForgotPasswordViewController {
     private var loadingBinder: Binder<Bool> {
-        return Binder(self, binding: { _, value in
+        return Binder(self, binding: { target, value in
             if value {
                 // display loading
             } else {
@@ -124,9 +117,11 @@ extension LoginViewController {
 }
 
 // MARK: - Helper
-extension LoginViewController {
+extension ForgotPasswordViewController {
+
 }
 
 // MARK: - Common
-extension LoginViewController {
+extension ForgotPasswordViewController {
+
 }

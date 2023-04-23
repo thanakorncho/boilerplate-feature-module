@@ -12,7 +12,10 @@ final class SceneAssembly: Assembly {
     func assemble(container: Container) {
         let assembies: [Assembly] = [
             LoginAssembly(),
-            MainLandingAssembly()
+            ForgotPasswordAssembly(),
+            MainLandingAssembly(),
+            MainSettingAssembly(),
+            MainProfileAssembly()
         ]
         assembies.forEach({ $0.assemble(container: container) })
     }

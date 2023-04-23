@@ -1,28 +1,27 @@
 //
-//  LoginViewModel.swift
+//  MainProfileViewModel.swift
 //  Pods
 //
-//  Created by Thanakorn Chongcharoenthanakul on 22/4/2566 BE.
+//  Created by Thanakorn Chongcharoenthanakul on 23/4/2566 BE.
 //  Copyright (c) 2566 BE ___ORGANIZATIONNAME___. All rights reserved.
 //
 
 import Foundation
-import RxRelay
 import RxSwift
-import RxSwiftExt
+import RxRelay
 
-class LoginViewModel:
+class MainProfileViewModel:
     DefaultBaseViewModel,
-    LoginViewModelDependencies,
-    LoginViewModelDriven {
+    MainProfileViewModelDependencies,
+    MainProfileViewModelDriven {
 
-    private typealias Object = LoginViewModel
-    private typealias Driven = LoginStreams
-    private typealias Model = LoginModels
+    private typealias Object = MainProfileViewModel
+    private typealias Driven = MainProfileStreams
+    private typealias Model = MainProfileModels
 
     // MARK: - Data source
-    var useCases: LoginViewModelUseCases
-    var context: LoginViewModelProvider.Context
+    var useCases: MainProfileViewModelUseCases
+    var context: MainProfileViewModelProvider.Context
 
     // MARK: - Rx
     let disposeBag = DisposeBag()
@@ -34,9 +33,9 @@ class LoginViewModel:
     private let loadRelay = PublishRelay<Model.Displayed>()
 
     // MARK: - Input & Output & Router
-    var input: LoginViewModelInput!
-    var output: LoginViewModelOutput!
-    var action: LoginViewModelAction!
+    var input: MainProfileViewModelInput!
+    var output: MainProfileViewModelOutput!
+    var action: MainProfileViewModelAction!
 
     // MARK: - Setup
     init(
@@ -50,12 +49,17 @@ class LoginViewModel:
     }
 
     private func setup() {
-        input = Driven.Input()
+        input = Driven.Input(
+            onLoad: .init()
+        )
         output = Driven.Output(
             didLoad: loadRelay.asDriverOnErrorJustComplete(),
             didLoading: loadingRelay.asDriverOnErrorJustComplete()
         )
-        action = Driven.Action()
+        action = Driven.Action(
+            tapSomething: .init(),
+            dismiss: .init()
+        )
         subscribes()
     }
 
@@ -83,9 +87,11 @@ class LoginViewModel:
 }
 
 // MARK: - Helper
-extension LoginViewModel {
+extension MainProfileViewModel {
+
 }
 
 // MARK: - Common
-extension LoginViewModel {
+extension MainProfileViewModel {
+
 }

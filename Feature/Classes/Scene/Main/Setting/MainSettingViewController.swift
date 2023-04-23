@@ -1,8 +1,8 @@
 //
-//  LoginViewController.swift
+//  MainSettingViewController.swift
 //  Pods
 //
-//  Created by Thanakorn Chongcharoenthanakul on 22/4/2566 BE.
+//  Created by Thanakorn Chongcharoenthanakul on 23/4/2566 BE.
 //  Copyright (c) 2566 BE ___ORGANIZATIONNAME___. All rights reserved.
 //
 
@@ -11,14 +11,14 @@ import RxCocoa
 import RxSwift
 import SnapKit
 
-class LoginViewController<ViewModel: LoginViewModelDriven>:
+class MainSettingViewController<ViewModel: MainSettingViewModelDriven>:
     DefaultBaseViewController,
     BaseViewDependencies {
 
-    internal typealias Model = LoginModels
+    internal typealias Model = MainSettingModels
 
     // MARK: - UI
-    private var mainView: LoginView = .init(frame: .zero)
+    private var mainView: MainSettingView = .init(frame: .zero)
 
     // MARK: - Dependencies
     var viewModel: ViewModel!
@@ -31,23 +31,17 @@ class LoginViewController<ViewModel: LoginViewModelDriven>:
     // MARK: - Observable
 
     // MARK: - Cycle
-    init(_ viewModel: ViewModel) {
+    convenience init(_ viewModel: ViewModel) {
+        self.init()
         self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
     }
 
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    init() {
+        super.init(nibName: nil, bundle: nil)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-
-    override func loadView() {
-        self.view = .init(frame: .zero)
-        setupHierarchies()
-        setupConstraints()
     }
 
     override func viewDidLoad() {
@@ -67,10 +61,13 @@ class LoginViewController<ViewModel: LoginViewModelDriven>:
     // MARK: - Setup
     internal func setup() {
         setupProperties()
+        setupHierarchies()
+        setupConstraints()
         setupEvent()
     }
 
     internal func setupProperties() {
+
     }
 
     internal func setupHierarchies() {
@@ -85,17 +82,12 @@ class LoginViewController<ViewModel: LoginViewModelDriven>:
 
     private func setupEvent() {
         disposeBag.insert([
-            mainView.event.loggedIn
-                .bind(to: viewModel.action.loggedIn),
-            mainView.event.forgotPass
-                .bind(to: viewModel.action.forgotPass)
+            // For View
         ])
 
         disposeBag.insert([
-            viewModel.output.didLoading
-                .drive(loadingBinder),
-            viewModel.output.didLoad
-                .drive(loadBinder)
+            viewModel.output.didLoading.drive(loadingBinder),
+            viewModel.output.didLoad.drive(loadBinder)
         ])
 
         disposeBag.insert([
@@ -105,9 +97,9 @@ class LoginViewController<ViewModel: LoginViewModelDriven>:
 }
 
 // MARK: - Binder
-extension LoginViewController {
+extension MainSettingViewController {
     private var loadingBinder: Binder<Bool> {
-        return Binder(self, binding: { _, value in
+        return Binder(self, binding: { target, value in
             if value {
                 // display loading
             } else {
@@ -124,9 +116,11 @@ extension LoginViewController {
 }
 
 // MARK: - Helper
-extension LoginViewController {
+extension MainSettingViewController {
+
 }
 
 // MARK: - Common
-extension LoginViewController {
+extension MainSettingViewController {
+
 }

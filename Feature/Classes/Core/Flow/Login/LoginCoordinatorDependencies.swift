@@ -11,4 +11,8 @@ protocol LoginCoordinatorType {
     typealias LoginVM = LoginViewModel
     typealias LoginVC = LoginViewController<LoginVM>
     typealias LoginProvider = LoginViewModelProvider
+    
+    typealias ForgotPasswordVM = ForgotPasswordViewModel
+    typealias ForgotPasswordVC = ForgotPasswordViewController<ForgotPasswordVM>
+    typealias ForgotPasswordProvider = ForgotPasswordViewModelProvider
 }

@@ -15,6 +15,7 @@ protocol LoginCoordinatorDependencies: DefaultCoordinator {
 
 struct LoginCoordinatorRoute {
     var loggedIn: PublishRelay<Void> = .init()
+    var forgotPass: PublishRelay<Void> = .init()
 }
 
 class LoginCoordinator: LoginCoordinatorDependencies, LoginCoordinatorType {
@@ -55,6 +56,13 @@ class LoginCoordinator: LoginCoordinatorDependencies, LoginCoordinatorType {
             .debug()
             .bind(to: flow.flow)
             .disposed(by: disposeBag)
+        route.forgotPass
+            .withUnretained(self)
+            .debug()
+            .subscribe(onNext: { owner, _ in
+                owner.routeToForgotPassword()
+            })
+            .disposed(by: disposeBag)
     }
 
     func start() {
@@ -71,6 +79,8 @@ extension LoginCoordinator {
         navigationController.pushViewController(login)
     }
 
-    private func routeToSetting() {
+    private func routeToForgotPassword() {
+        let forgotPass = makeForgotPassword()
+        navigationController.pushViewController(forgotPass)
     }
 }

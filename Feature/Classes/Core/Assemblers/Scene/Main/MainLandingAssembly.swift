@@ -17,11 +17,11 @@ class MainLandingAssembly: Assembly {
         viewModel(container)
         viewController(container)
     }
-    
+
     private func useCases(_ container: Container) {
         container.register(
             MainLandingViewModelUseCases.self,
-            factory: { resolver in
+            factory: { _ in
                 MainLandingViewModelProvider.UseCases()
             })
         .inObjectScope(.transient)
@@ -39,7 +39,7 @@ class MainLandingAssembly: Assembly {
     private func viewController(_ container: Container) {
         container.register(
             MainLandingViewController<ViewModel>.self,
-            factory: { resolver, context in
+            factory: { _, context in
                 MainLandingViewController<ViewModel>(context)
             })
         .inObjectScope(.transient)
