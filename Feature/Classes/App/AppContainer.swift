@@ -21,17 +21,16 @@ public final class AppContainer: ContainerDependencies {
     }
 
     private func initialApplication(_ window: UIWindow? = nil) {
-//        assembler = Assembler(
-//            [
-//                AppAssembly(self, window),
-//                AppDelegateAssembly(),
-//                UtilityAssembly(),
-//                CoordinatorAssembly(),
-//                UnityAssembly(),
-//                UseCaseAssembly(),
-//                SceneAssembly()
-//            ],
-//            container: container
-//        )
+        assembler = Assembler(
+            [
+                AppAssembly(self, window),
+                AppDelegateAssembly(),
+                UtilityAssembly(),
+                CoordinatorAssembly(),
+                UseCaseAssembly(),
+                SceneAssembly()
+            ],
+            container: container
+        )
     }
 }

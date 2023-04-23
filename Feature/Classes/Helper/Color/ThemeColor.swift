@@ -26,7 +26,7 @@ public struct ThemeColor {
     }
 
     public static var background: UIColor {
-        return FeatColor.dark.color
+        return FeatColor.white.color
     }
 
     public static var text: UIColor {
@@ -38,7 +38,7 @@ public struct ThemeColor {
     }
 
     public static var disable: UIColor {
-        return FeatColor.dark.color
+        return .gray
     }
 
     public static var outline: UIColor {

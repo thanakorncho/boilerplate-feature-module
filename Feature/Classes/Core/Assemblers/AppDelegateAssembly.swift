@@ -12,7 +12,7 @@ class AppDelegateAssembly: Assembly {
     func assemble(container: Container) {
         registerContainerAppDelegate(container)
     }
-    
+
     private func registerContainerAppDelegate(_ container: Container) {
         container.register(
             ContainerAppDelegateDependencies.self,

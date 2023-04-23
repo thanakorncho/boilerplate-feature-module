@@ -59,8 +59,6 @@ open class DefaultBaseView: UIView, BaseView {
     }
 
     func setupNavigation() {
-        let array = Array.init(repeating: PersonDomain(id: "", firstName: "", surName: "", age: 0, suspend: true), count: 10)
-        
     }
 
     func setupHierarchies() {

@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import UIKit
+import RxCocoa
 
 class LoginView:
     DefaultBaseView {
@@ -16,12 +17,12 @@ class LoginView:
     internal typealias Model = LoginModels
 
     struct Events {
-
+        var loggedIn: ControlEvent<Void>
     }
 
     // MARK: - UI
-//    private let label: UILabel = .init(frame: .zero)
-//    private let button: UIButton = .init(frame: .zero)
+    private let label: FeatLabel = .init()
+    private let button: FeatTextButton = .init()
 
     // MARK: - Constraints
 
@@ -32,8 +33,10 @@ class LoginView:
     // MARK: - Rx
 
     // MARK: - Output
-    func transform() -> Events {
-        return .init()
+    var event: Events {
+        return .init(
+            loggedIn: button.rx.tap
+        )
     }
 
     // MARK: - Cycle
@@ -43,19 +46,31 @@ class LoginView:
 
     // MARK: - Setup
     internal override func setupProperties() {
-
+        backgroundColor = ThemeColor.background
+        label.style = .titleM
+        label.textAlignment = .center
+        button.style = .main
+        button.backgroundColorForNormal = .orange
     }
 
     internal override func setupHierarchies() {
-
+        addSubview(label)
+        addSubview(button)
     }
 
     internal override func setupConstraints() {
-
+        label.snp.makeConstraints({ make in
+            make.center.equalToSuperview()
+        })
+        button.snp.makeConstraints({ make in
+            make.top.equalTo(label.snp.bottom).offset(.s16)
+            make.centerX.equalToSuperview()
+        })
     }
 
     internal override func setupLocalizes() {
-
+        label.text = "Login Screen"
+        button.setTitle("Logged In", for: .normal)
     }
 
     internal override func setupEvent() {
@@ -64,25 +79,19 @@ class LoginView:
 
     func setupDisplayed(_ displayed: Model.Displayed? = nil) {
         if let displayed = displayed {
-
         } else {
-
         }
     }
 }
 
 // MARK: - Binder (Input)
 extension LoginView {
-
 }
 
 // MARK: - Helper
 extension LoginView {
-
 }
 
 // MARK: - Common
 extension LoginView {
-
 }
-

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../Feature/Tests/TestPlans/Feature-Unit-Tests.xctestplan">
+   </FileRef>
+   <FileRef
       location = "group:Feature.xcodeproj">
    </FileRef>
    <FileRef

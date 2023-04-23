@@ -12,17 +12,14 @@ import RxSwift
 
 struct MainLandingModels {
     struct Displayed {
-
     }
 }
 
 struct MainLandingViewModelProvider {
     struct UseCases: MainLandingViewModelUseCases {
-
     }
 
     struct Context {
-
     }
 }
 
@@ -34,5 +31,10 @@ struct MainLandingStreams {
     struct Output: MainLandingViewModelOutput {
         var didLoad: Driver<MainLandingModels.Displayed>
         var didLoading: Driver<Bool>
+    }
+    
+    struct Action: MainLandingViewModelAction {
+        var tapSomething: PublishSubject<Void>
+        var dismiss: PublishRelay<Void>
     }
 }

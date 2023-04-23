@@ -12,17 +12,14 @@ import RxSwift
 
 struct LoginModels {
     struct Displayed {
-
     }
 }
 
 struct LoginViewModelProvider {
     struct UseCases: LoginViewModelUseCases {
-
     }
-
+    
     struct Context {
-
     }
 }
 
@@ -30,9 +27,14 @@ struct LoginStreams {
     struct Input: LoginViewModelInput {
         let onLoad: PublishRelay<Void>
     }
-
+    
     struct Output: LoginViewModelOutput {
         var didLoad: Driver<LoginModels.Displayed>
         var didLoading: Driver<Bool>
+    }
+    
+    struct Action: LoginViewModelAction {
+        var loggedIn: PublishSubject<Void>
+        var dismiss: PublishRelay<Void>
     }
 }

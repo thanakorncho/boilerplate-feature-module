@@ -12,7 +12,6 @@ import RxRelay
 import RxSwift
 
 protocol MainLandingViewModelInput: BaseViewModelInput {
-
 }
 
 protocol MainLandingViewModelOutput: BaseViewModelOutput {
@@ -25,16 +24,14 @@ protocol MainLandingViewModelAction: BaseViewModelAction {
 
 protocol MainLandingViewModelDriven: BaseViewModelDriven where
 Input == MainLandingViewModelInput,
-Output == MainLandingViewModelOutput {
-
+Output == MainLandingViewModelOutput,
+Action == MainLandingViewModelAction {
 }
 
 protocol MainLandingViewModelUseCases {
-
 }
 
 protocol MainLandingViewModelDependencies: BaseViewModelDependencies where
 Context == MainLandingViewModelProvider.Context,
 UseCases == MainLandingViewModelUseCases {
-
 }

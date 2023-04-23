@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import RxRelay
 import RxSwift
 import RxSwiftExt
-import RxRelay
 
 class MainLandingViewModel:
     DefaultBaseViewModel,
@@ -36,6 +36,7 @@ class MainLandingViewModel:
     // MARK: - Input & Output & Router
     var input: MainLandingViewModelInput!
     var output: MainLandingViewModelOutput!
+    var action: MainLandingViewModelAction!
 
     // MARK: - Setup
     init(
@@ -56,6 +57,10 @@ class MainLandingViewModel:
             didLoad: loadRelay.asDriverOnErrorJustComplete(),
             didLoading: loadingRelay.asDriverOnErrorJustComplete()
         )
+        action = Driven.Action(
+            tapSomething: .init(),
+            dismiss: .init()
+        )
         subscribes()
     }
 
@@ -72,7 +77,6 @@ class MainLandingViewModel:
     }
 
     private func service() {
-
     }
 
     // MARK: - Process
@@ -84,10 +88,8 @@ class MainLandingViewModel:
 
 // MARK: - Helper
 extension MainLandingViewModel {
-
 }
 
 // MARK: - Common
 extension MainLandingViewModel {
-
 }

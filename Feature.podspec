@@ -71,5 +71,10 @@ Pod::Spec.new do |s|
     # Firebase
     #  s.dependency 'Firebase/Core'
     #  s.dependency 'FirebaseAnalytics'
-    
+
+    s.test_spec 'Tests' do |test_spec|
+        test_spec.source_files = 'Feature/Tests/**/*.{swift,h}'
+        test_spec.dependency 'RxBlocking'
+        test_spec.dependency 'RxTest'
+    end
 end

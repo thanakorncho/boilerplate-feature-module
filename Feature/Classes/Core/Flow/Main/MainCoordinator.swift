@@ -11,7 +11,6 @@ import RxSwift
 import Swinject
 
 protocol MainCoordinatorDependencies: DefaultCoordinator {
-//    var isLoadUnity: Bool { get set }
 }
 
 struct MainCoordinatorRoute {
@@ -49,7 +48,7 @@ class MainCoordinator: MainCoordinatorDependencies, MainCoordinatorType {
     }
 
     // MARK: - Action
-    internal func subscribes(
+    func subscribes(
         _ disposeBag: DisposeBag
     ) -> MainCoordinatorRoute {
         let route = MainCoordinatorRoute()
@@ -66,30 +65,11 @@ class MainCoordinator: MainCoordinatorDependencies, MainCoordinatorType {
 // MARK: - Routing
 extension MainCoordinator {
     private func routeToLanding() {
+        print("routeToLanding")
+        let mainLanding = makeMainLanding()
+        navigationController.pushViewController(mainLanding)
     }
 
     private func routeToSetting() {
-//        func bindAction(_ source: SettingsViewModel) {
-//            source.action?.tapSettingsType
-//                .withUnretained(self)
-//                .do(onNext: { [weak viewController] owner, _ in
-//                    viewController?.dismissOrPop(completion: {
-//                        owner.avatarLiveViewController?
-//                            .viewModel.action.dismiss
-//                            .acceptVoid()
-//                    })
-//                })
-//                    .subscribe()
-//                    .disposed(by: source.disposeBag)
-//                    }
-//
-//        let context = LiveAvatarSettingsViewModelProvider.Context(
-//            role: .speaker,
-//            type: .none)
-//        let viewModel: SettingsViewModel = container.resolve(argument: context)
-//        let viewController: SettingsViewController = container.resolve(argument: viewModel)
-//        viewController.modalPresentationStyle = .overCurrentContext
-//        bindAction(viewModel)
-//        navigatePresent(viewController)
     }
 }

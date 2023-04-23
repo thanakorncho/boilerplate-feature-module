@@ -31,17 +31,23 @@ class MainLandingViewController<ViewModel: MainLandingViewModelDriven>:
     // MARK: - Observable
 
     // MARK: - Cycle
-    convenience init(_ viewModel: ViewModel) {
-        self.init()
+    init(_ viewModel: ViewModel) {
         self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
     }
 
-    init() {
-        super.init(nibName: nil, bundle: nil)
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func loadView() {
+        self.view = .init(frame: .zero)
+        setupHierarchies()
+        setupConstraints()
     }
 
     override func viewDidLoad() {
@@ -61,13 +67,11 @@ class MainLandingViewController<ViewModel: MainLandingViewModelDriven>:
     // MARK: - Setup
     internal func setup() {
         setupProperties()
-        setupHierarchies()
-        setupConstraints()
         setupEvent()
     }
 
     internal func setupProperties() {
-
+        view.backgroundColor = .clear
     }
 
     internal func setupHierarchies() {
@@ -99,7 +103,7 @@ class MainLandingViewController<ViewModel: MainLandingViewModelDriven>:
 // MARK: - Binder
 extension MainLandingViewController {
     private var loadingBinder: Binder<Bool> {
-        return Binder(self, binding: { target, value in
+        return Binder(self, binding: { _, value in
             if value {
                 // display loading
             } else {
@@ -117,10 +121,8 @@ extension MainLandingViewController {
 
 // MARK: - Helper
 extension MainLandingViewController {
-
 }
 
 // MARK: - Common
 extension MainLandingViewController {
-
 }

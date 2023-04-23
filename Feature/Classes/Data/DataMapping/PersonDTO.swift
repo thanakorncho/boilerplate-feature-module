@@ -13,7 +13,7 @@ struct Person: AutoDecodable {
     let surName: String
     let age: Int
     let suspend: Bool
-    
+
     enum CodingKeys: String, CodingKey {
     // sourcery:inline:auto:Person.CodingKeys.AutoCodable
             case id

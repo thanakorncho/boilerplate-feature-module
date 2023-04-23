@@ -26,13 +26,11 @@ class FeatButton: UIButton {
     var isRounded: Bool = true
     var isGradient: Bool = false
 
-    var defaultBackgroundColor: UIColor?
     var backgroundColorForNormal: UIColor?
     var backgroundColorForDisabled: UIColor?
     var backgroundColorForSelected: UIColor?
 
     // Border
-    var defaultBorderColor: UIColor?
     var borderColorForNormal: UIColor?
     var borderColorForDisabled: UIColor?
     var borderColorForSelected: UIColor?
@@ -111,17 +109,17 @@ class FeatButton: UIButton {
         performRoundedWithBorderNotify()
     }
 
-    //    override var imageForNormal: UIImage? {
-    //        didSet {
-    //            if let imageForNormal = imageForNormal {
-    //                imageForHighlighted = imageForNormal.original.tint(
-    //                    FeatColor.white.color,
-    //                    blendMode: .destinationIn)
-    //            } else {
-    //                imageForHighlighted = nil
-    //            }
-    //        }
-    //    }
+//    override var imageForNormal: UIImage? {
+//        didSet {
+//            if let imageForNormal = imageForNormal {
+//                imageForHighlighted = imageForNormal.original.tint(
+//                    FeatColor.white.color,
+//                    blendMode: .destinationIn)
+//            } else {
+//                imageForHighlighted = nil
+//            }
+//        }
+//    }
 
     override  var state: UIControl.State {
         stateHandler(super.state)
@@ -164,6 +162,7 @@ class FeatButton: UIButton {
             //                fromToColors: ThemeColor.button,
             //                locations: [0, 0.53, 1.0],
             //                direction: .topRightToBottomLeft)
+            backgroundColorForNormal = ThemeColor.background
             backgroundColorForDisabled = ThemeColor.disable
             makeContentEdgeInsets(
                 top: 12,
@@ -238,7 +237,7 @@ class FeatButton: UIButton {
     }
 
     func defaultStateAction() {
-        defaultState()
+        normalState()
     }
 
     private func normalState() {
@@ -280,16 +279,6 @@ class FeatButton: UIButton {
 
         if let tintColorForDisabled = tintColorForDisabled {
             tintColor = tintColorForDisabled
-        }
-    }
-
-    private func defaultState() {
-        if let defaultBackgroundColor = defaultBackgroundColor {
-            backgroundColor = defaultBackgroundColor
-        }
-
-        if let defaultBorderColor = defaultBorderColor {
-            borderColor = defaultBorderColor
         }
     }
 }
@@ -457,7 +446,6 @@ extension FeatButton {
     }
 
     func makeFilled(backgroundColor: UIColor) {
-        defaultBackgroundColor = backgroundColor
         backgroundColorForNormal = backgroundColor
         self.backgroundColor = backgroundColor
         self.borderColor = nil

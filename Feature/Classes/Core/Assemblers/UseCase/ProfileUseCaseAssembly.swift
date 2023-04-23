@@ -12,7 +12,7 @@ final class ProfileUseCaseAssembly: Assembly {
     func assemble(container: Container) {
         container.register(
             ProfileUseCaseDependencies.self,
-            factory: { resolver, context in
+            factory: { _, context in
                 ProfileUseCase(context)
             })
         .inObjectScope(.transient)

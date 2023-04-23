@@ -37,7 +37,6 @@ class FeatOutlinedButton: FeatButton {
 //                locations: [0, 0.53, 1.0],
 //                direction: .topRightToBottomLeft)
             makeOutlined(borderColor: ThemeColor.primary)
-            defaultBackgroundColor = ThemeColor.background
             backgroundColorForNormal = ThemeColor.background
             tintColorForSelected = ThemeColor.tint
             tintColorForNormal = ThemeColor.primary

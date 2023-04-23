@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxRelay
 import RxSwift
 import Swinject
 
@@ -13,6 +14,7 @@ protocol LoginCoordinatorDependencies: DefaultCoordinator {
 }
 
 struct LoginCoordinatorRoute {
+    var loggedIn: PublishRelay<Void> = .init()
 }
 
 class LoginCoordinator: LoginCoordinatorDependencies, LoginCoordinatorType {
@@ -26,6 +28,7 @@ class LoginCoordinator: LoginCoordinatorDependencies, LoginCoordinatorType {
     var flow: CoordinatorRouteDependencies
 
     // MARK: - Properties
+    var route: LoginCoordinatorRoute = .init()
     var navigationController: UINavigationController
 
     // MARK: - Constants
@@ -41,7 +44,16 @@ class LoginCoordinator: LoginCoordinatorDependencies, LoginCoordinatorType {
         self.navigationController = navigationController
     }
 
+    func subscribe() {
+        route.loggedIn
+            .map({ CoordinatorFlow.main })
+            .debug()
+            .bind(to: flow.flow)
+            .disposed(by: disposeBag)
+    }
+
     func start() {
+        subscribe()
         routeToLogin()
     }
 }
@@ -49,6 +61,9 @@ class LoginCoordinator: LoginCoordinatorDependencies, LoginCoordinatorType {
 // MARK: - Routing
 extension LoginCoordinator {
     private func routeToLogin() {
+        print("routeToLogin")
+        let login = makeLogin(.init())
+        navigationController.pushViewController(login)
     }
 
     private func routeToSetting() {

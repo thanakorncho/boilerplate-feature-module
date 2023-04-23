@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import RxRelay
 import RxSwift
 import RxSwiftExt
-import RxRelay
 
 class LoginViewModel:
     DefaultBaseViewModel,
@@ -36,6 +36,7 @@ class LoginViewModel:
     // MARK: - Input & Output & Router
     var input: LoginViewModelInput!
     var output: LoginViewModelOutput!
+    var action: LoginViewModelAction!
 
     // MARK: - Setup
     init(
@@ -55,6 +56,10 @@ class LoginViewModel:
         output = Driven.Output(
             didLoad: loadRelay.asDriverOnErrorJustComplete(),
             didLoading: loadingRelay.asDriverOnErrorJustComplete()
+        )
+        action = Driven.Action(
+            loggedIn: .init(),
+            dismiss: .init()
         )
         subscribes()
     }
@@ -84,10 +89,8 @@ class LoginViewModel:
 
 // MARK: - Helper
 extension LoginViewModel {
-
 }
 
 // MARK: - Common
 extension LoginViewModel {
-
 }

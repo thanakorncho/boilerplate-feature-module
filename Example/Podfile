@@ -12,5 +12,7 @@ target 'Feature_Example' do
     pod 'Nimble'
     pod 'iOSSnapshotTestCase'
     pod 'Nimble-Snapshots'
+
+    pod 'Feature', :path => '../', :testspecs => ['Tests']
   end
 end

@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "9B86E6AB-674E-42F5-B9FC-865B48F0FD84",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Feature.xcodeproj",
+      "identifier" : "607FACCF1AFB9204008FA782",
+      "name" : "Feature_Example"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:Pods\/Pods.xcodeproj",
+        "identifier" : "238D4D68DF63CBABA246A403958B2C3D",
+        "name" : "Feature-Unit-Tests"
+      }
+    }
+  ],
+  "version" : 1
+}

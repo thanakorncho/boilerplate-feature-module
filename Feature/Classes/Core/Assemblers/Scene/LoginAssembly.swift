@@ -10,13 +10,22 @@ import Swinject
 
 class LoginAssembly: Assembly {
     private typealias ViewModel = LoginViewModel
-    
+
     func assemble(container: Container) {
+        useCases(container)
         viewModel(container)
         viewController(container)
     }
-    
-    
+
+    private func useCases(_ container: Container) {
+        container.register(
+            LoginViewModelUseCases.self,
+            factory: { _ in
+                LoginViewModelProvider.UseCases()
+            })
+        .inObjectScope(.transient)
+    }
+
     private func viewModel(_ container: Container) {
         container.register(
             LoginViewModel.self,
@@ -25,12 +34,12 @@ class LoginAssembly: Assembly {
             })
         .inObjectScope(.transient)
     }
-    
+
     private func viewController(_ container: Container) {
         container.register(
             LoginViewController<ViewModel>.self,
-            factory: { resolver, context in
-                LoginViewController<ViewModel>(.init(context, resolver.resolve()))
+            factory: { _, context in
+                LoginViewController<ViewModel>(context)
             })
         .inObjectScope(.transient)
     }

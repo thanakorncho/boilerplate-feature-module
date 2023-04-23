@@ -12,7 +12,6 @@ import RxRelay
 import RxSwift
 
 protocol LoginViewModelInput: BaseViewModelInput {
-
 }
 
 protocol LoginViewModelOutput: BaseViewModelOutput {
@@ -20,17 +19,16 @@ protocol LoginViewModelOutput: BaseViewModelOutput {
 }
 
 protocol LoginViewModelAction: BaseViewModelAction {
-    var tapSomething: PublishSubject<Void> { get }
+    var loggedIn: PublishSubject<Void> { get }
 }
 
 protocol LoginViewModelDriven: BaseViewModelDriven where
 Input == LoginViewModelInput,
-Output == LoginViewModelOutput {
-
+Output == LoginViewModelOutput,
+Action == LoginViewModelAction {
 }
 
 protocol LoginViewModelUseCases {
-
 }
 
 protocol LoginViewModelDependencies: BaseViewModelDependencies where

@@ -8,6 +8,7 @@
 import Foundation
 
 protocol LoginCoordinatorType {
-    //    typealias ViewModel =
-    //    typealias ViewController =
+    typealias LoginVM = LoginViewModel
+    typealias LoginVC = LoginViewController<LoginVM>
+    typealias LoginProvider = LoginViewModelProvider
 }
